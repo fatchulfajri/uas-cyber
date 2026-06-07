@@ -547,18 +547,18 @@ $all_users = $conn->query("SELECT id, nim, nama, team, role FROM users ORDER BY 
                                     <tr class="hover:bg-gray-50"
                                         data-nim="<?= htmlspecialchars(strtolower($u['nim'])) ?>"
                                         data-nama="<?= htmlspecialchars(strtolower($u['nama'])) ?>"
-                                        data-role="<?= htmlspecialchars($u['role']) ?>"
-                                        data-team="<?= htmlspecialchars($u['team']) ?>">
-                                        <td class="px-4 py-3 font-mono text-sm"><?= htmlspecialchars($u['nim']) ?></td>
-                                        <td class="px-4 py-3"><?= htmlspecialchars($u['nama']) ?></td>
+                                        data-role="<?= htmlspecialchars($u['role'] ?? '') ?>"
+                                        data-team="<?= htmlspecialchars($u['team'] ?? '') ?>">
+                                        <td class="px-4 py-3 font-mono text-sm"><?= htmlspecialchars($u['nim'] ?? '-') ?></td>
+                                        <td class="px-4 py-3"><?= htmlspecialchars($u['nama'] ?? '-') ?></td>
                                         <td class="px-4 py-3">
                                             <span class="px-2 py-1 rounded-full text-xs font-medium <?= $u['role'] === 'dosen' ? 'bg-purple-50 text-purple-600' : 'bg-blue-50 text-blue-600' ?>">
-                                                <?= htmlspecialchars($u['team']) ?>
+                                                <?= htmlspecialchars($u['team'] ?? '-') ?>
                                             </span>
                                         </td>
                                         <td class="px-4 py-3">
                                             <span class="px-2 py-1 rounded-full text-xs font-medium <?= $u['role'] === 'dosen' ? 'bg-purple-100 text-purple-700' : 'bg-green-100 text-green-700' ?>">
-                                                <?= htmlspecialchars($u['role']) ?>
+                                                <?= htmlspecialchars($u['role'] ?? '-') ?>
                                             </span>
                                         </td>
                                         <td class="px-4 py-3 text-center">
