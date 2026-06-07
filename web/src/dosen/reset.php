@@ -7,5 +7,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'dosen') {
     die("Akses ditolak");
 }
 
+// Truncate submissions table
 $conn->query("TRUNCATE submissions");
-echo "RESET BERHASIL";
+
+// Redirect back to dashboard with success message
+header("Location: dashboard.php?reset=1");
+exit;
+?>

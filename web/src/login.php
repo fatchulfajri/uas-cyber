@@ -19,8 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $q = $stmt->get_result();
 
     if ($q && $q->num_rows > 0) {
-        $_SESSION['user'] = $q->fetch_assoc();
-        header("Location: index.php");
+        $user = $q->fetch_assoc();
+        $_SESSION['user'] = $user;
+
+        // Redirect based on role
+        if ($user['role'] === 'dosen') {
+            header("Location: dosen/dashboard.php");
+        } else {
+            header("Location: index.php");
+        }
         exit;
     } else {
         $error = "NIM atau password salah!";
