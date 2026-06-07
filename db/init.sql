@@ -69,10 +69,11 @@ USE cyber;
 
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  nim VARCHAR(20),
-  team VARCHAR(50),
-  role ENUM('mahasiswa','dosen'),
-  password VARCHAR(50)
+  nim VARCHAR(20) UNIQUE,
+  nama VARCHAR(100),
+  team VARCHAR(10),
+  role ENUM('mahasiswa','dosen') DEFAULT 'mahasiswa',
+  password VARCHAR(255)
 );
 
 CREATE TABLE submissions (

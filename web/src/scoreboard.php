@@ -1,4 +1,7 @@
-<?php include 'config.php'; ?>
+<?php
+include 'config.php';
+include 'session.php';
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>

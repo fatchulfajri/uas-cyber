@@ -1,4 +1,12 @@
-<?php include '../config.php';
+<?php
+include '../config.php';
+include '../session.php';
+
+// Proteksi halaman
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'dosen') {
+    die("Akses ditolak");
+}
+
 header("Content-Type: text/csv");
 header("Content-Disposition: attachment; filename=scoreboard.csv");
 

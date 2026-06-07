@@ -1,10 +1,6 @@
-<?php 
-// Memastikan session sudah berjalan sebelum mengecek role
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
+<?php
 include '../config.php';
+include '../session.php';
 
 // Proteksi halaman
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'dosen') {
