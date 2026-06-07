@@ -96,6 +96,21 @@ CREATE TABLE challenges (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Tracks ephemeral per-user challenge containers spawned via spawn.php.
+-- One live instance per (user, challenge); cleaned up on correct flag or TTL expiry.
+CREATE TABLE active_instances (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  challenge_id INT NOT NULL,
+  container_id VARCHAR(64) NOT NULL,
+  container_name VARCHAR(100) NOT NULL,
+  port INT NOT NULL,
+  status ENUM('running','stopped') DEFAULT 'running',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  expires_at DATETIME NOT NULL,
+  UNIQUE KEY uniq_user_challenge (user_id, challenge_id)
+);
+
 INSERT INTO challenges (title, category, description, flag, points) VALUES
 ('Web SQL Injection', 'easy', 'Temukan celah SQL Injection pada form login untuk mendapatkan flag.', 'CTF{b4s1c_sql_1nject10n}', 100),
 ('Reverse Engineering', 'easy', 'Analisa binary sederhana untuk menemukan flag tersembunyi.', 'CTF{s1mpl3_r3v3rs3_3lf}', 100),

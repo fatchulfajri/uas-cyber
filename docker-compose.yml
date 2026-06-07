@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   # web:
   #   build: ./web
@@ -9,22 +8,20 @@ services:
 
   web:
     build: ./web
-    image: php:8.2-apache
     container_name: cyber-web
     ports:
       - "8081:80"
-    # volumes:
-    #   - ./web:/var/www/html
+    volumes:
+      # Lets spawn.php drive the host Docker daemon to launch challenge
+      # instances. NOTE: this grants the web container host-root-equivalent
+      # access — keep the spawn allowlist (challenge_map.php) strict.
+      - /var/run/docker.sock:/var/run/docker.sock
+    # Optional: host/IP students use to reach spawned instances. Defaults to the
+    # request host. Set this if instances must be reached on a different address.
+    # environment:
+    #   CTF_INSTANCE_HOST: "192.168.1.10"
     depends_on:
       - db
-
-  # db:
-  #   image: mysql:5.7
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: root
-  #     MYSQL_DATABASE: vulnapp
-  #   volumes:
-  #     - ./web/db.sql:/docker-entrypoint-initdb.d/db.sql
 
   db:
     image: mysql:8.0
@@ -34,14 +31,3 @@ services:
       MYSQL_DATABASE: cyber
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-
-  # scoreboard:
-  #   build: ./scoreboard
-  #   ports:
-  #     - "5000:5000"
-  #   depends_on:
-  #     - db
-      
-  linux:
-    build: ./linux
-    tty: true
