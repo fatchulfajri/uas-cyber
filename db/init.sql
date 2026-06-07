@@ -79,10 +79,29 @@ CREATE TABLE users (
 CREATE TABLE submissions (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT,
-  challenge VARCHAR(50),
+  challenge_id INT,
   score INT,
-  submit_time DATETIME
+  submit_time DATETIME,
+  UNIQUE KEY unique_submission (user_id, challenge_id)
 );
+
+CREATE TABLE challenges (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(100),
+  category ENUM('easy', 'medium', 'hard'),
+  description TEXT,
+  flag VARCHAR(100),
+  points INT,
+  solves INT DEFAULT 0,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO challenges (title, category, description, flag, points) VALUES
+('Web SQL Injection', 'easy', 'Temukan celah SQL Injection pada form login untuk mendapatkan flag.', 'CTF{b4s1c_sql_1nject10n}', 100),
+('Reverse Engineering', 'easy', 'Analisa binary sederhana untuk menemukan flag tersembunyi.', 'CTF{s1mpl3_r3v3rs3_3lf}', 100),
+('Web XSS Attack', 'medium', 'Exploitasi celah XSS untuk mengeksekusi JavaScript dan mendapatkan flag.', 'CTF{st0r3d_x55}', 200),
+('Cryptography Challenge', 'medium', 'Dekripsi pesan yang terenkripsi dengan kombinasi Caesar dan Base64.', 'CTF{crypt0_c4es4r_b4se64}', 200),
+('Network PCAP Analysis', 'hard', 'Analisa file PCAP untuk menemukan flag yang tersembunyi dalam traffic jaringan.', 'CTF{pc4p_4n4lys1s_e4sy}', 300);
 
 INSERT INTO users (nim, team, role, password)
 VALUES ('0000', 'DOSEN', 'dosen', 'admin');

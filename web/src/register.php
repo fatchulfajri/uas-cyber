@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar - CTF Competition</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -307,11 +308,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
 <div class="register-container">
-    <div class="logo-section">
-        <h1>🎯 CTF Competition</h1>
-        <p>Cyber Security Challenge Platform</p>
-    </div>
-
     <a href="login.php" class="back-link">← Kembali ke Login</a>
 
     <div class="register-card">
@@ -376,9 +372,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <div class="footer">
-        © 2026 CTF Competition. All rights reserved.
+        © 2026 UAS Keamanan Siber.
     </div>
 </div>
+
+<script>
+    lucide.createIcons();
+</script>
 
 </body>
 </html>
