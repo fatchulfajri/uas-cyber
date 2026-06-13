@@ -84,7 +84,7 @@ $name = sprintf('ctf_%d_%d_%s', $user_id, $challenge_id, uniqid());
 // $name is built from ints + uniqid() (hex) so it is shell-safe, but escape
 // defensively anyway. $image is an allowlisted constant.
 $run_args = sprintf(
-    'run -d --rm --name %s -P --memory=256m --cpus=0.5 --pids-limit=128 --label ctf=1 %s',
+    'run -d --rm --name %s -P --label ctf=1 %s',
     escapeshellarg($name),
     escapeshellarg($image)
 );
