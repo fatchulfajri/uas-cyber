@@ -112,11 +112,11 @@ CREATE TABLE active_instances (
 );
 
 INSERT INTO challenges (title, category, description, flag, points) VALUES
-('Web SQL Injection', 'easy', 'Temukan celah SQL Injection pada form login untuk mendapatkan flag.', 'CTF{b4s1c_sql_1nject10n}', 100),
-('Reverse Engineering', 'easy', 'Analisa binary sederhana untuk menemukan flag tersembunyi.', 'CTF{s1mpl3_r3v3rs3_3lf}', 100),
-('Web XSS Attack', 'medium', 'Exploitasi celah XSS untuk mengeksekusi JavaScript dan mendapatkan flag.', 'CTF{st0r3d_x55}', 150),
-('Cryptography Challenge', 'medium', 'Dekripsi pesan yang terenkripsi dengan kombinasi Caesar dan Base64.', 'CTF{crypt0_c4es4r_b4se64}', 150),
-('Network PCAP Analysis', 'hard', 'Analisa file PCAP untuk menemukan flag yang tersembunyi dalam traffic jaringan.', 'CTF{pc4p_4n4lys1s_e4sy}', 200);
+('Web SQL Injection', 'easy', 'Temukan celah SQL Injection pada form login untuk mendapatkan flag.', 'CTF{sql_1nj3ct10n_byp4ss_m4st3r}', 100),
+('Reverse Engineering', 'easy', 'Analisa binary sederhana untuk menemukan flag tersembunyi.', 'CTF{d3c0mp1l3_b1n4ry_4nd_c0nqu3r}', 100),
+('Web XSS Attack', 'medium', 'Exploitasi celah XSS untuk mengeksekusi JavaScript dan mendapatkan flag.', 'CTF{p0pp1ng_x55_4l3rt_b0x3s}', 150),
+('Cryptography Challenge', 'medium', 'Dekripsi pesan yang terenkripsi dengan kombinasi Caesar dan Base64.', 'CTF{br34k1ng_p0st_qu4ntum_c1ph3r}', 150),
+('Network PCAP Analysis', 'hard', 'Analisa file PCAP untuk menemukan flag yang tersembunyi dalam traffic jaringan.', 'CTF{f0ll0w_th3_tcp_str34m_sh4rk}', 200);
 
 INSERT INTO users (nim, nama, team, role, password)
 VALUES ('0000', 'otsukare', 'DOSEN', 'dosen', 'admin');

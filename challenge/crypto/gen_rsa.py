@@ -14,7 +14,7 @@ below never ships inside the instance.
 """
 import random
 
-FLAG = b"CTF{crypt0_c4es4r_b4se64}"
+FLAG = b"CTF{br34k1ng_p0st_qu4ntum_c1ph3r}"
 E = 65537
 BLOCK = 4  # bytes per block; max block value 2^32 stays well below n (>= 2^46)
 

@@ -37,7 +37,7 @@ function vulnerable_login(PDO $db, string $username, string $password): bool
     return $result ? (bool) $result->fetch(PDO::FETCH_ASSOC) : false;
 }
 
-$FLAG = 'CTF{b4s1c_sql_1nject10n}';
+$FLAG = 'CTF{sql_1nj3ct10n_byp4ss_m4st3r}';
 
 $loggedIn = false;
 $error = '';

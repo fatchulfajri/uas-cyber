@@ -11,7 +11,7 @@ ships inside the instance.
 """
 from scapy.all import IP, ICMP, Raw, wrpcap
 
-FLAG = "CTF{pc4p_4n4lys1s_e4sy}"
+FLAG = "CTF{f0ll0w_th3_tcp_str34m_sh4rk}"
 SRC = "10.0.0.13"   # the "compromised" host doing the exfiltration
 DST = "10.0.0.1"    # the attacker's collector
 
