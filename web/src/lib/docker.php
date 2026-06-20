@@ -36,6 +36,23 @@ function ctf_docker(string $args): array
 }
 
 /**
+ * Check whether a Docker container is currently running. Queries the Docker
+ * daemon with `docker ps -q` filtered by container ID. Returns false when the
+ * container has crashed, been OOM-killed, or was removed entirely.
+ *
+ * @param {string} $cid Full or short container ID (hex, 12-64 chars).
+ * @returns {bool} True only when Docker reports the container as running.
+ */
+function is_container_alive(string $cid): bool
+{
+    if (!valid_cid($cid)) {
+        return false;
+    }
+    $res = ctf_docker('ps -q -f id=' . escapeshellarg($cid));
+    return $res['ok'] && $res['output'] !== '';
+}
+
+/**
  * Dispatch a Docker subcommand in the background and return immediately without
  * waiting for it to finish. Stdio is fully redirected and the process is
  * detached with nohup so it survives the request, keeping slow operations such

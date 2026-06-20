@@ -68,15 +68,21 @@ $stmt->bind_param('ii', $user_id, $challenge_id);
 $stmt->execute();
 $existing = $stmt->get_result()->fetch_assoc();
 if ($existing) {
-    echo json_encode([
-        'ok'            => true,
-        'reused'        => true,
-        'url'           => 'http://' . instance_host() . ':' . (int) $existing['port'],
-        'port'          => (int) $existing['port'],
-        'expires_at'    => $existing['expires_at'],
-        'ttl_remaining' => max(0, strtotime($existing['expires_at']) - time()),
-    ]);
-    exit;
+    if (is_container_alive($existing['container_id'])) {
+        echo json_encode([
+            'ok'            => true,
+            'reused'        => true,
+            'url'           => 'http://' . instance_host() . ':' . (int) $existing['port'],
+            'port'          => (int) $existing['port'],
+            'expires_at'    => $existing['expires_at'],
+            'ttl_remaining' => max(0, strtotime($existing['expires_at']) - time()),
+        ]);
+        exit;
+    }
+
+    $del = $conn->prepare("DELETE FROM active_instances WHERE id = ?");
+    $del->bind_param('i', $existing['id']);
+    $del->execute();
 }
 
 // --- Launch a fresh container ------------------------------------------------
